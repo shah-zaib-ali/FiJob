@@ -2,7 +2,16 @@
 
 @{
     ViewBag.Title = "Job Details";
-    Layout = "~/Views/Shared/_JobSeekerDashboard.cshtml";
+
+    var role = Session["UserRole"] != null ? Session["UserRole"].ToString() : "";
+    if (role == "Employer")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Removed JobSeekerDashboard layout
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_JobSeekerDashboard.cshtml";
+    }
 
     var userId = Session["UserId"] != null ? (int)Session["UserId"] : 0;
     var hasApplied = ViewBag.HasApplied != null && (bool)ViewBag.HasApplied;
@@ -37,22 +46,25 @@
 
             <hr class="divider" />
 
-            <div class="job-actions">
-                @if (hasApplied)
-                {
-                    <button class="btn-disabled" disabled>Already Applied</button>
-                    <a class="save-btn" href="@Url.Action("SaveJob", "SavedJobs", new { jobId = Model.Job.job_id })">Save Job</a>
-                    <a class="msg-btn" href="@Url.Action("Index", "Chat", new { receiverId = Model.Job.employer_id })">
-                        <i class="fa-solid fa-comment"></i> Message Employer
-                    </a>
-                }
+            @if (role != "Employer")
+            {
+                <div class="job-actions">
+                    @if (hasApplied)
+                    {
+                        <button class="btn-disabled" disabled>Already Applied</button>
+                        <a class="save-btn" href="@Url.Action("SaveJob", "SavedJobs", new { jobId = Model.Job.job_id })">Save Job</a>
+                        <a class="msg-btn" href="@Url.Action("Index", "Chat", new { receiverId = Model.Job.employer_id })">
+                            <i class="fa-solid fa-comment"></i> Message Employer
+                        </a>
+                    }
 
-                @if (userId > 0 && !hasApplied)
-                {
-                    <a class="apply-btn" href="@Url.Action("Apply", "Application", new { jobId = Model.Job.job_id })">Apply Now</a>
-                    <a class="save-btn" href="@Url.Action("SaveJob", "SavedJobs", new { jobId = Model.Job.job_id })">Save Job</a>
-                }
-            </div>
+                    @if (userId > 0 && !hasApplied)
+                    {
+                        <a class="apply-btn" href="@Url.Action("Apply", "Application", new { jobId = Model.Job.job_id })">Apply Now</a>
+                        <a class="save-btn" href="@Url.Action("SaveJob", "SavedJobs", new { jobId = Model.Job.job_id })">Save Job</a>
+                    }
+                </div>
+            }
         </div>
 
         <div class="employer-card">
