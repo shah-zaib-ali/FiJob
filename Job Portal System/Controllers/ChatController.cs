@@ -59,6 +59,32 @@ namespace Job_Portal_System.Controllers
 
             return View(history);
         }
+        
+        [HttpGet]
+        public JsonResult GetUnreadCounts()
+        {
+            if (Session["UserId"] == null)
+            {
+                return Json(new { messagesCount = 0, notificationsCount = 0 }, JsonRequestBehavior.AllowGet);
+            }
+
+            int userId = (int)Session["UserId"];
+
+            // Calculate active notification counts (You haven't implemented Read messages so querying count basically here from existing logic)
+            int unreadMessages = db.Messages
+                                   .Where(m => m.ReceiverID == userId) // Extend logic to check 'IsRead = false' if column exists
+                                   .Count(); 
+            // NOTE: Using general messages count placeholder. Replace `m.IsRead == false` if added in future.
+
+            int unreadNotifications = db.NOTIFICATIONS
+                                        .Where(n => n.user_id == userId && n.read_status == "UNREAD")
+                                        .Count();
+
+            return Json(new { 
+                messagesCount = unreadMessages, 
+                notificationsCount = unreadNotifications 
+            }, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Inbox()
         {

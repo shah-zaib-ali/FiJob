@@ -7,17 +7,18 @@
 <style>
     /* Page Title */
     .page-title {
-        color: #002E7F;
+        color: #fff;
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 30px;
         text-align: center;
+        letter-spacing: -0.5px;
     }
 
     .form-group .hint {
         display: block;
         font-size: 12px;
-        color: #666;
+        color: #94A3B8;
         margin-top: 5px;
         flex-basis: 100%;
         margin-left: 180px; /* Label ki width ke barabar */
@@ -32,31 +33,47 @@
     /* Form Card */
     .form-card {
         max-width: 900px;
-        background: #fff;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         margin: auto;
-        padding: 35px;
-        border-radius: 20px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        padding: 40px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
     }
 
     .form-group {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
     }
 
         .form-group label {
             width: 180px;
             font-weight: 600;
-            color: #002E7F;
+            color: #94A3B8;
+            padding-top: 10px;
+            text-transform: uppercase;
+            font-size: 13.5px;
+            letter-spacing: 0.8px;
         }
 
         .form-group .form-control {
             flex: 1;
             border-radius: 10px;
-            border: 1px solid #ccc;
-            padding: 10px 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 16px;
             font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .form-group .form-control:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #00FF88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+            outline: none;
         }
 
         .form-group textarea.form-control {
@@ -64,35 +81,50 @@
         }
 
     .btn-submit, .btn-cancel {
-        padding: 12px 28px;
+        padding: 14px 32px;
         border-radius: 12px;
         font-size: 15px;
         font-weight: 600;
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         text-decoration: none;
-        display: inline-block;
-        margin-right: 10px;
-        transition: 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        cursor: pointer;
+        margin-right: 12px;
     }
 
     .btn-submit {
-        background: #002E7F;
-        color: #fff;
+        background: #00FF88;
+        color: #0B0B0B;
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
     }
 
         .btn-submit:hover {
-            background: #003b99;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: #00DF77;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.35);
+            color: #0B0B0B;
         }
 
     .btn-cancel {
-        background: #ccc;
-        color: #333;
+        background: transparent;
+        color: #E2E8F0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
         .btn-cancel:hover {
-            background: #bbb;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
+        
+    /* Date Input Specifics */
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
 </style>
 
 <div class="page-title">Post a Job</div>

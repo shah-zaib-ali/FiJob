@@ -28,30 +28,30 @@
         *, *::before, *::after { box-sizing: border-box; }
 
         :root {
-            --navy:        #002147;
-            --navy-mid:    #0d3272;
-            --blue:        #1d4ed8;
-            --blue-light:  #3b82f6;
-            --blue-pale:   #eff6ff;
-            --blue-border: #bfdbfe;
-            --surface:     #ffffff;
-            --bg:          #f1f5f9;
-            --border:      #e2e8f0;
-            --text-primary: #0f172a;
-            --text-second:  #475569;
-            --text-muted:   #94a3b8;
-            --green:        #16a34a;
-            --green-pale:   #f0fdf4;
-            --amber:        #d97706;
-            --amber-pale:   #fffbeb;
-            --red:          #dc2626;
-            --red-pale:     #fef2f2;
-            --radius-sm:    6px;
-            --radius-md:    10px;
-            --radius-lg:    14px;
-            --sidebar-w:    228px;
-            --topbar-h:     60px;
-            --transition:   0.18s ease;
+            --navy:        rgba(18, 18, 18, 0.85); /* Topbar base */
+            --navy-mid:    #1A1A1A;
+            --blue:        #00FF88; /* Changed to Neon Green */
+            --blue-light:  #00DF77;
+            --blue-pale:   rgba(0, 255, 136, 0.08); /* Hover effects */
+            --blue-border: rgba(0, 255, 136, 0.3);
+            --surface:     rgba(18, 18, 18, 0.95); /* Panels/Sidebar */
+            --bg:          #0B0B0B; /* Deep Black Background */
+            --border:      rgba(255, 255, 255, 0.08); /* Subtle glass borders */
+            --text-primary: #FFFFFF;
+            --text-second:  #E2E8F0;
+            --text-muted:   #94A3B8;
+            --green:        #00FF88;
+            --green-pale:   rgba(0, 255, 136, 0.1);
+            --amber:        #F59E0B;
+            --amber-pale:   rgba(245, 158, 11, 0.1);
+            --red:          #EF4444;
+            --red-pale:     rgba(239, 68, 68, 0.1);
+            --radius-sm:    8px;
+            --radius-md:    12px;
+            --radius-lg:    16px;
+            --sidebar-w:    240px;
+            --topbar-h:     68px;
+            --transition:   0.3s ease;
         }
 
         html, body {
@@ -61,8 +61,8 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text-primary);
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 14.5px;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -74,93 +74,104 @@
             right: 0;
             height: var(--topbar-h);
             background: var(--navy);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             display: flex;
             align-items: center;
-            padding: 0 20px;
+            padding: 0 24px;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
         }
 
         /* Logo */
         .hh-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             flex-shrink: 0;
             width: var(--sidebar-w);
         }
 
         .hh-logo-mark {
-            width: 34px;
-            height: 34px;
-            background: var(--blue-light);
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            background: var(--blue);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
         }
 
         .hh-logo-mark svg {
             width: 20px;
             height: 20px;
-            fill: #fff;
+            fill: #0B0B0B; /* Dark logo icon */
         }
 
         .hh-logo-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: #fff;
-            letter-spacing: -0.3px;
+            letter-spacing: 0.5px;
         }
 
         .hh-logo-name span {
-            color: var(--blue-light);
+            color: var(--blue);
         }
 
         /* Search bar */
         .hh-search {
             flex: 1;
-            max-width: 480px;
-            margin: 0 24px;
+            max-width: 520px;
+            margin: 0 32px;
         }
 
         .hh-search-inner {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
             display: flex;
             align-items: center;
-            padding: 0 14px;
-            height: 38px;
-            transition: border-color var(--transition), background var(--transition);
+            padding: 0 16px;
+            height: 42px;
+            transition: var(--transition);
         }
 
         .hh-search-inner:focus-within {
-            background: rgba(255,255,255,0.13);
-            border-color: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
         }
 
         .hh-search-inner i {
-            color: rgba(255,255,255,0.45);
-            font-size: 13px;
-            margin-right: 9px;
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-right: 10px;
             flex-shrink: 0;
+            transition: color var(--transition);
+        }
+        
+        .hh-search-inner:focus-within i {
+            color: var(--blue);
         }
 
         .hh-search-inner input {
             background: transparent;
             border: none;
             outline: none;
-            color: #fff;
-            font-size: 13px;
+            color: var(--text-primary);
+            font-size: 14px;
             font-family: inherit;
             width: 100%;
         }
 
         .hh-search-inner input::placeholder {
-            color: rgba(255,255,255,0.38);
+            color: rgba(255, 255, 255, 0.3);
+            font-weight: 400;
         }
 
         /* Topbar right */
@@ -168,38 +179,43 @@
             margin-left: auto;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 12px;
         }
 
         .hh-icon-btn {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255,255,255,0.7);
-            font-size: 15px;
+            color: var(--text-second);
+            font-size: 16px;
             cursor: pointer;
-            transition: background var(--transition), color var(--transition);
+            transition: var(--transition);
             position: relative;
             text-decoration: none;
+            background: transparent;
+            border: 1px solid transparent;
         }
 
         .hh-icon-btn:hover {
-            background: rgba(255,255,255,0.1);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--border);
+            color: var(--text-primary);
+            transform: translateY(-2px);
         }
 
         .hh-icon-btn .badge-dot {
             position: absolute;
             top: 6px;
             right: 6px;
-            width: 8px;
-            height: 8px;
-            background: #ef4444;
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
             border-radius: 50%;
-            border: 1.5px solid var(--navy);
+            border: 2px solid #0B0B0B;
+            box-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
         }
 
         /* Avatar / dropdown */
@@ -208,40 +224,43 @@
         }
 
         .hh-avatar {
-            width: 36px;
-            height: 36px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue-light), var(--blue));
+            background: var(--blue);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-size: 13px;
-            font-weight: 600;
+            color: #0B0B0B;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
-            border: 2px solid rgba(255,255,255,0.15);
-            transition: border-color var(--transition);
+            border: 2px solid transparent;
+            transition: var(--transition);
             user-select: none;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
         }
 
         .hh-avatar:hover {
-            border-color: rgba(255,255,255,0.4);
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 255, 136, 0.35);
         }
 
         .hh-dropdown {
             position: absolute;
-            top: calc(100% + 10px);
+            top: calc(100% + 14px);
             right: 0;
-            width: 200px;
-            background: var(--surface);
+            width: 220px;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(16px);
             border-radius: var(--radius-md);
             border: 1px solid var(--border);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            padding: 6px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            padding: 8px;
             opacity: 0;
             pointer-events: none;
-            transform: translateY(-6px);
-            transition: opacity 0.15s ease, transform 0.15s ease;
+            transform: translateY(-10px);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 999;
         }
 
@@ -255,30 +274,32 @@
         .hh-dropdown a {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 10px;
+            gap: 12px;
+            padding: 10px 14px;
             border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            font-size: 13px;
+            color: var(--text-second);
+            font-size: 14px;
+            font-weight: 500;
             text-decoration: none;
-            transition: background var(--transition);
+            transition: var(--transition);
         }
 
         .hh-dropdown a:hover {
-            background: var(--bg);
+            background: var(--blue-pale);
+            color: var(--text-primary);
         }
 
         .hh-dropdown a i {
-            width: 16px;
+            width: 18px;
             text-align: center;
             color: var(--text-muted);
-            font-size: 13px;
+            font-size: 14px;
+            transition: var(--transition);
         }
-
-        .hh-dropdown-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 5px 0;
+        
+        .hh-dropdown a:hover i {
+            color: var(--blue);
+            transform: scale(1.1);
         }
 
         .hh-dropdown .logout-link {
@@ -286,6 +307,11 @@
         }
 
         .hh-dropdown .logout-link i {
+            color: var(--red);
+        }
+        
+        .hh-dropdown .logout-link:hover {
+            background: var(--red-pale);
             color: var(--red);
         }
 
@@ -297,8 +323,9 @@
             bottom: 0;
             width: var(--sidebar-w);
             background: var(--surface);
+            backdrop-filter: blur(12px);
             border-right: 1px solid var(--border);
-            padding: 16px 10px;
+            padding: 24px 12px;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -309,40 +336,40 @@
         .hh-sidebar::-webkit-scrollbar { display: none; }
 
         .hh-nav-section {
-            margin-bottom: 6px;
+            margin-bottom: 24px;
         }
 
         .hh-nav-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.9px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--text-muted);
-            padding: 8px 10px 5px;
+            padding: 0 14px 10px;
         }
 
         .hh-nav-link {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 9px 11px;
-            border-radius: var(--radius-md);
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: var(--radius-sm);
             color: var(--text-second);
             text-decoration: none;
-            font-size: 13.5px;
-            font-weight: 400;
-            transition: background var(--transition), color var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
             position: relative;
-            margin: 1px 0;
+            margin-bottom: 2px;
         }
 
         .hh-nav-link i {
-            width: 17px;
-        text-align: center;
-            font-size: 14px;
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
             flex-shrink: 0;
             color: var(--text-muted);
-            transition: color var(--transition);
+            transition: var(--transition);
         }
 
         .hh-nav-link:hover {
@@ -352,49 +379,56 @@
 
         .hh-nav-link:hover i {
             color: var(--blue);
+            transform: scale(1.1);
         }
 
         .hh-nav-link.active {
             background: var(--blue-pale);
             color: var(--blue);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .hh-nav-link.active i {
             color: var(--blue);
+            text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
         }
 
         .hh-nav-link.active::before {
             content: '';
             position: absolute;
-            left: -10px;
-            top: 6px;
-            bottom: 6px;
-            width: 3px;
+            left: -12px;
+            top: 20%;
+            height: 60%;
+            width: 4px;
             background: var(--blue);
-            border-radius: 0 3px 3px 0;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.8);
         }
 
         .hh-nav-badge {
             margin-left: auto;
             background: var(--blue);
-            color: #fff;
-            font-size: 10px;
-            font-weight: 600;
-            padding: 2px 7px;
+            color: #0B0B0B;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
             border-radius: 20px;
-            min-width: 20px;
+            min-width: 22px;
             text-align: center;
             line-height: 1.4;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.3);
         }
 
         .hh-nav-badge.red {
-            background: var(--red);
+            background: transparent;
+            border: 1px solid var(--red);
+            color: var(--red);
+            box-shadow: none;
         }
 
         .hh-sidebar-footer {
             margin-top: auto;
-            padding-top: 12px;
+            padding-top: 16px;
             border-top: 1px solid var(--border);
         }
 
@@ -403,44 +437,55 @@
             margin-left: var(--sidebar-w);
             margin-top: var(--topbar-h);
             min-height: calc(100vh - var(--topbar-h));
-            padding: 28px 28px 80px;
+            padding: 32px 32px 80px;
         }
 
         /* ========== PAGE COMPONENTS ========== */
 
         /* Page header */
         .hh-page-header {
-            margin-bottom: 24px;
+            margin-bottom: 32px;
         }
 
         .hh-page-header h1 {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--text-primary);
-            margin: 0 0 4px;
-            letter-spacing: -0.3px;
+            margin: 0 0 6px;
+            letter-spacing: -0.5px;
         }
 
         .hh-page-header p {
             color: var(--text-muted);
-            font-size: 13.5px;
+            font-size: 15px;
             margin: 0;
         }
 
         /* Cards */
         .hh-card {
-            background: var(--surface);
+            background: rgba(18, 18, 18, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 22px 24px;
-            margin-bottom: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+        
+        .hh-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
         }
 
         .hh-card-title {
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 600;
             color: var(--text-primary);
-            margin: 0 0 18px;
+            margin: 0 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Buttons */
@@ -448,32 +493,33 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 7px;
-            padding: 8px 18px;
+            gap: 8px;
+            padding: 10px 20px;
             border-radius: var(--radius-sm);
-            font-size: 13.5px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             font-family: inherit;
             cursor: pointer;
-            transition: all var(--transition);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             border: 1px solid transparent;
-            line-height: 1.4;
+            line-height: 1.5;
             white-space: nowrap;
+            outline: none;
         }
 
         .hh-btn-primary {
             background: var(--blue);
-            color: #fff;
+            color: #0B0B0B;
             border-color: var(--blue);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
         }
 
         .hh-btn-primary:hover {
-            background: #1a44c2;
-            border-color: #1a44c2;
-            color: #fff;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(29,78,216,0.3);
+            background: var(--blue-light);
+            color: #0B0B0B;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.35);
         }
 
         .hh-btn-outline {
@@ -485,270 +531,224 @@
         .hh-btn-outline:hover {
             background: var(--blue-pale);
             color: var(--blue);
+            border-color: var(--blue);
+            transform: translateY(-2px);
         }
 
         .hh-btn-ghost {
             background: transparent;
             color: var(--text-second);
-            border-color: var(--border);
+            border-color: transparent;
         }
 
         .hh-btn-ghost:hover {
-            background: var(--bg);
+            background: rgba(255, 255, 255, 0.05);
             color: var(--text-primary);
+            border-color: var(--border);
         }
 
         .hh-btn-danger {
-            background: var(--red);
-            color: #fff;
-            border-color: var(--red);
+            background: transparent;
+            color: var(--red);
+            border-color: rgba(239, 68, 68, 0.3);
         }
 
         .hh-btn-danger:hover {
-            background: #b91c1c;
-            border-color: #b91c1c;
-            color: #fff;
-            transform: translateY(-1px);
+            background: var(--red-pale);
+            border-color: var(--red);
+            color: var(--red);
+            transform: translateY(-2px);
         }
 
         .hh-btn-success {
             background: var(--green);
-            color: #fff;
+            color: #0B0B0B;
             border-color: var(--green);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
         }
 
         .hh-btn-success:hover {
-            background: #15803d;
-            border-color: #15803d;
-            color: #fff;
-            transform: translateY(-1px);
+            background: #00DF77;
+            border-color: #00DF77;
+            color: #0B0B0B;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 16px rgba(0, 255, 136, 0.3);
         }
 
         .hh-btn-sm {
-            padding: 5px 12px;
-            font-size: 12.5px;
+            padding: 6px 14px;
+            font-size: 13px;
         }
 
         .hh-btn-lg {
-            padding: 11px 24px;
-            font-size: 15px;
+            padding: 12px 28px;
+            font-size: 15.5px;
         }
 
-        /* Badges / Tags */
-        .hh-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 11.5px;
-            font-weight: 500;
-            padding: 3px 10px;
-            border-radius: 20px;
-        }
-
-        .hh-badge-blue  { background: var(--blue-pale);  color: var(--blue); }
-        .hh-badge-green { background: var(--green-pale); color: var(--green); }
-        .hh-badge-amber { background: var(--amber-pale); color: var(--amber); }
-        .hh-badge-red   { background: var(--red-pale);   color: var(--red); }
-        .hh-badge-gray  { background: var(--bg);         color: var(--text-second); border: 1px solid var(--border); }
-
-        /* Tables */
+        /* Tables & the rest ... */
         .hh-table {
             width: 100%;
             border-collapse: separate;
             border-spacing: 0;
+            margin-top: 10px;
         }
 
         .hh-table thead th {
-            background: var(--bg);
-            color: var(--text-second);
+            background: var(--navy-mid);
+            color: var(--text-muted);
             font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.5px;
+            font-size: 12.5px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            padding: 10px 14px;
-            border-top: 1px solid var(--border);
+            padding: 14px 18px;
             border-bottom: 1px solid var(--border);
         }
 
         .hh-table thead th:first-child {
-            border-left: 1px solid var(--border);
             border-radius: var(--radius-sm) 0 0 0;
         }
 
         .hh-table thead th:last-child {
-            border-right: 1px solid var(--border);
             border-radius: 0 var(--radius-sm) 0 0;
         }
 
         .hh-table tbody td {
-            padding: 12px 14px;
+            padding: 16px 18px;
             border-bottom: 1px solid var(--border);
-            color: var(--text-primary);
-            font-size: 13.5px;
+            color: var(--text-second);
+            font-size: 14.5px;
             vertical-align: middle;
+            transition: var(--transition);
         }
 
-        .hh-table tbody tr:last-child td:first-child { border-left: 1px solid var(--border); border-radius: 0 0 0 var(--radius-sm); }
-        .hh-table tbody tr:last-child td:last-child  { border-right: 1px solid var(--border); border-radius: 0 0 var(--radius-sm) 0; }
-        .hh-table tbody td:first-child { border-left: 1px solid var(--border); }
-        .hh-table tbody td:last-child  { border-right: 1px solid var(--border); }
-
-        .hh-table tbody tr {
-            transition: background var(--transition);
+        .hh-table tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-primary);
         }
-
-        .hh-table tbody tr:hover {
-            background: var(--blue-pale);
-        }
+        
+        .hh-table tbody tr:last-child td { border-bottom: none; }
 
         /* Form elements */
         .hh-form-group {
-            margin-bottom: 18px;
+            margin-bottom: 22px;
         }
 
         .hh-label {
             display: block;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             color: var(--text-second);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .hh-input, .hh-select, .hh-textarea {
             width: 100%;
-            height: 40px;
-            padding: 0 13px;
-            border: 1px solid var(--border);
+            height: 46px;
+            padding: 0 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-sm);
-            font-size: 13.5px;
+            font-size: 14.5px;
             font-family: inherit;
             color: var(--text-primary);
-            background: var(--surface);
-            transition: border-color var(--transition), box-shadow var(--transition);
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
             outline: none;
         }
 
         .hh-textarea {
             height: auto;
-            padding: 10px 13px;
+            padding: 14px 16px;
             resize: vertical;
         }
 
         .hh-input:focus, .hh-select:focus, .hh-textarea:focus {
-            border-color: var(--blue-light);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+            background: rgba(0, 0, 0, 0.4);
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
         }
 
         .hh-input::placeholder { color: var(--text-muted); }
-
-        /* Alerts */
-        .hh-alert {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 13px 16px;
-            border-radius: var(--radius-md);
-            font-size: 13.5px;
-            margin-bottom: 16px;
-            border: 1px solid transparent;
-        }
-
-        .hh-alert i { margin-top: 1px; flex-shrink: 0; }
-
-        .hh-alert-info    { background: var(--blue-pale);  color: var(--blue);  border-color: var(--blue-border); }
-        .hh-alert-success { background: var(--green-pale); color: var(--green); border-color: #bbf7d0; }
-        .hh-alert-warning { background: var(--amber-pale); color: var(--amber); border-color: #fde68a; }
-        .hh-alert-danger  { background: var(--red-pale);   color: var(--red);   border-color: #fecaca; }
-
-        /* Empty state */
-        .hh-empty {
-            text-align: center;
-            padding: 48px 24px;
-        }
-
-        .hh-empty-icon {
-            font-size: 36px;
-            color: var(--border);
-            margin-bottom: 14px;
-        }
-
-        .hh-empty h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 6px;
-        }
-
-        .hh-empty p {
-            color: var(--text-muted);
-            font-size: 13.5px;
-            margin: 0 0 20px;
-        }
-
+        
         /* Stat row */
         .hh-stats-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 14px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
         .hh-stat-card {
-            background: var(--surface);
+            background: rgba(18, 18, 18, 0.6);
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 16px 18px;
+            padding: 22px;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+        
+        .hh-stat-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
         }
 
         .hh-stat-label {
-            font-size: 11.5px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .hh-stat-label i {
+            color: var(--blue);
         }
 
         .hh-stat-value {
-            font-size: 26px;
+            font-size: 32px;
             font-weight: 700;
             color: var(--text-primary);
             line-height: 1;
-            letter-spacing: -0.5px;
-        }
-
-        .hh-stat-meta {
-            font-size: 12px;
-            margin-top: 5px;
+            letter-spacing: -1px;
         }
 
         /* Profile snippet in sidebar bottom */
         .hh-sidebar-profile {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px;
-            border-radius: var(--radius-md);
-            transition: background var(--transition);
+            gap: 12px;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
             cursor: pointer;
             text-decoration: none;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
         }
 
-        .hh-sidebar-profile:hover { background: var(--bg); }
+        .hh-sidebar-profile:hover { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-color: rgba(255, 255, 255, 0.15);
+        }
 
         .hh-sidebar-avatar {
-            width: 34px;
-            height: 34px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--blue-light), var(--blue));
-            color: #fff;
+            background: var(--blue);
+            color: #0B0B0B;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             flex-shrink: 0;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 255, 136, 0.2);
         }
 
         .hh-sidebar-avatar img {
@@ -758,15 +758,16 @@
         }
 
         .hh-sidebar-user-name {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--text-primary);
             line-height: 1.3;
         }
 
         .hh-sidebar-user-role {
-            font-size: 11px;
-            color: var(--text-muted);
+            font-size: 12px;
+            color: var(--blue);
+            font-weight: 500;
         }
 
         /* ========== FOOTER ========== */
@@ -895,6 +896,7 @@
             <span class="hh-logo-name">Fi<span>Job</span></span>
         </a>
 
+        <!-- Search bar -->
         <div class="hh-search">
             <div class="hh-search-inner">
                 <i class="fa-solid fa-search"></i>
@@ -905,7 +907,7 @@
         <div class="hh-topbar-right">
             <a href="/Chat/Inbox" class="hh-icon-btn" title="Messages">
                 <i class="fa-solid fa-envelope"></i>
-                <span class="badge-dot"></span>
+                <span class="badge-dot" id="topbarMsgBadge" style="display:none;"></span>
             </a>
             <div class="hh-avatar-wrap">
                 <div class="hh-avatar" tabindex="0" style="overflow:hidden;">
@@ -985,12 +987,12 @@
                 <a href="@Url.Action("Inbox", "Chat")" class="hh-nav-link">
                     <i class="fa-solid fa-envelope"></i>
                     Messages
-                    <span class="hh-nav-badge" id="sidebarMsgBadge" style="display:none;">0</span>
+                    <span class="hh-nav-badge" id="sidebarMsgBadge" style="display:none; background-color: #00FF88; color: #0b0b0b;">0</span>
                 </a>
                 <a href="/Notification/JobSeekerNotifications" class="hh-nav-link">
                     <i class="fa-solid fa-bell"></i>
                     Notifications
-                    <span class="hh-nav-badge red" id="sidebarNotifBadge" style="display:none;">0</span>
+                    <span class="hh-nav-badge red" id="sidebarNotifBadge" style="display:none; background-color: #FF4D4D; color: white;">0</span>
                 </a>
             </div>
         </nav>
@@ -1043,13 +1045,37 @@
             // SignalR Connection
             var chat = $.connection.chatHub;
             
+            // Function to load actual unread counts on initial load
+            function fetchInitialBadgeCounts() {
+                $.ajax({
+                    url: '/Chat/GetUnreadCounts',
+                    type: 'GET',
+                    success: function (data) {
+                        if (data.messagesCount > 0) {
+                            $('#sidebarMsgBadge').text(data.messagesCount).css('display', 'inline-block');
+                            $('#topbarMsgBadge').show();
+                        } else {
+                            $('#sidebarMsgBadge').hide();
+                            $('#topbarMsgBadge').hide();
+                        }
+                        
+                        if (data.notificationsCount > 0) {
+                            $('#sidebarNotifBadge').text(data.notificationsCount).css('display', 'inline-block');
+                        } else {
+                            $('#sidebarNotifBadge').hide();
+                        }
+                    }
+                });
+            }
+            
             chat.client.updateMessageBadge = function (receiverId) {
                 var currentUserId = @((Session["UserId"] != null) ? Session["UserId"].ToString() : "0");
                 if (receiverId == currentUserId) {
                     var badge = $('#sidebarMsgBadge');
                     var currentVal = parseInt(badge.text()) || 0;
                     currentVal += 1;
-                    badge.text(currentVal).show();
+                    badge.text(currentVal).css('display', 'inline-block');
+                    $('#topbarMsgBadge').show();
                 }
             };
             
@@ -1059,12 +1085,13 @@
                     var badge = $('#sidebarNotifBadge');
                     var currentVal = parseInt(badge.text()) || 0;
                     currentVal += 1;
-                    badge.text(currentVal).show();
+                    badge.text(currentVal).css('display', 'inline-block');
                 }
             };
 
             $.connection.hub.start().done(function () {
                 console.log("Connected to Real-time Hub");
+                fetchInitialBadgeCounts();
             });
         });
 

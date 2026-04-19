@@ -10,24 +10,28 @@
 <style>
     /* Dashboard Hero Section */
     .dashboard-hero {
-        background: linear-gradient(to right, #002E7F, #004bb8);
+        background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 255, 136, 0.05));
         padding: 50px 30px;
         text-align: center;
-        color: white;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+        color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.3);
         margin-bottom: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 
     .dashboard-hero h2 {
         font-size: 28px;
         font-weight: 800;
         margin-bottom: 10px;
+        color: #fff;
     }
 
     .dashboard-hero p {
         font-size: 16px;
-        opacity: 0.9;
+        color: #94A3B8;
         margin: 5px 0;
     }
 
@@ -41,42 +45,43 @@
     }
 
     .kpi-card {
-        background: #fff;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         border-radius: 16px;
         padding: 25px;
         min-width: 260px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         position: relative;
         overflow: hidden;
-        border: 1px solid #edf2f7;
-        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         text-align: center;
     }
 
     .kpi-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
     .kpi-icon {
         font-size: 35px;
         margin-bottom: 15px;
-        opacity: 0.9;
     }
 
     .kpi-title {
-        font-size: 15px;
-        color: #64748b;
-        font-weight: 600;
+        font-size: 13px;
+        color: #94A3B8;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.8px;
+        letter-spacing: 1px;
         margin-bottom: 10px;
     }
 
     .kpi-number {
         font-size: 42px;
         font-weight: 800;
-        color: #0f172a;
+        color: #fff;
         line-height: 1;
         margin: 0;
     }
@@ -86,8 +91,9 @@
         top: -30px;
         right: -30px;
         font-size: 150px;
-        opacity: 0.03;
+        opacity: 0.02;
         z-index: 0;
+        color: #fff;
     }
 
     .kpi-content {
@@ -97,15 +103,16 @@
 
     /* Charts Container */
     .chart-box {
-        background: #fff;
-        border-radius: 20px;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
         padding: 30px;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-        border: 1px solid #edf2f7;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .chart-title {
-        color: #0f172a;
+        color: #fff;
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 25px;
@@ -115,7 +122,7 @@
     }
 
     .chart-title i {
-        color: #002E7F;
+        color: #F59E0B;
     }
     
     /* Skills Badges Grid */
@@ -127,24 +134,25 @@
     }
 
     .skill-badge {
-        background: #F0F5FF;
-        color: #002E7F;
-        border: 1px solid #c9defe;
+        background: rgba(0, 255, 136, 0.05);
+        color: #E2E8F0;
+        border: 1px solid rgba(0, 255, 136, 0.2);
         padding: 8px 16px;
         border-radius: 30px;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 500;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        transition: 0.2s;
+        transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .skill-badge:hover {
-        background: #002E7F;
-        color: white;
-        border-color: #002E7F;
+        background: rgba(0, 255, 136, 0.15);
+        color: #fff;
+        border-color: #00FF88;
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
     }
 </style>
 
@@ -157,19 +165,19 @@
 
     <!-- KPI Summary Grid -->
     <div class="dashboard-grid">
-        <div class="kpi-card" style="border-top: 4px solid #10b981;">
-            <i class="fas fa-bookmark kpi-bg text-success"></i>
+        <div class="kpi-card" style="border-top: 4px solid #00FF88;">
+            <i class="fas fa-bookmark kpi-bg"></i>
             <div class="kpi-content">
-                <div class="kpi-icon" style="color: #10b981;"><i class="fas fa-bookmark"></i></div>
+                <div class="kpi-icon" style="color: #00FF88;"><i class="fas fa-bookmark"></i></div>
                 <div class="kpi-title">Saved Jobs</div>
                 <h3 class="kpi-number">@Model.SavedJobs</h3>
             </div>
         </div>
 
-        <div class="kpi-card" style="border-top: 4px solid #f59e0b;">
-            <i class="fas fa-tools kpi-bg text-warning"></i>
+        <div class="kpi-card" style="border-top: 4px solid #F59E0B;">
+            <i class="fas fa-tools kpi-bg"></i>
             <div class="kpi-content">
-                <div class="kpi-icon" style="color: #f59e0b;"><i class="fas fa-tools"></i></div>
+                <div class="kpi-icon" style="color: #F59E0B;"><i class="fas fa-tools"></i></div>
                 <div class="kpi-title">Skills & Education Found</div>
                 <h3 class="kpi-number">@Model.TotalSkills</h3>
             </div>
@@ -194,7 +202,7 @@
                                 @foreach (var s in skills)
                                 {
                                     <span class="skill-badge">
-                                        <i class="fa-solid fa-check-circle" style="color: #10b981; font-size: 13px;"></i>
+                                        <i class="fa-solid fa-check-circle" style="color: #00FF88; font-size: 13px;"></i>
                                         @s.skillName
                                     </span>
                                 }
@@ -202,7 +210,7 @@
                         }
                         else
                         {
-                            <p style="color: #64748b; font-style: italic;">No specific skills have been added yet.</p>
+                            <p style="color: #94A3B8; font-style: italic;">No specific skills have been added yet.</p>
                         }
                     }
                 </div>

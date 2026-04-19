@@ -35,6 +35,16 @@ namespace Job_Portal_System.Controllers
             ViewBag.TotalApplications = db.APPLICATIONS.Count(a => a.JOB.employer_id == uid);
             ViewBag.TotalJobsPosted = db.JOBS.Count(j => j.employer_id == uid);
 
+            // Job specific application breakdown for Charting
+            var jobStats = db.JOBS.Where(j => j.employer_id == uid)
+                                  .Select(j => new {
+                                      JobTitle = j.job_title,
+                                      AppCount = j.APPLICATIONS.Count()
+                                  }).ToList();
+
+            ViewBag.JobTitles = Newtonsoft.Json.JsonConvert.SerializeObject(jobStats.Select(x => x.JobTitle).ToList());
+            ViewBag.JobApps = Newtonsoft.Json.JsonConvert.SerializeObject(jobStats.Select(x => x.AppCount).ToList());
+
             return View(employer);
         }
 

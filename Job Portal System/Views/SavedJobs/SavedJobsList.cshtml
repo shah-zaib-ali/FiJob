@@ -4,120 +4,258 @@
 }
 
 <style>
+    body {
+        font-family: inherit !important;
+        background-color: #0b0b0b;
+        color: #e2e8f0;
+    }
+
     .page-title {
-        color: #002E7F;
+        color: #fff;
         font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 20px;
+        font-weight: 800;
+        margin-bottom: 25px;
+        letter-spacing: -0.5px;
     }
 
     .table-modern {
         width: 100%;
-        background: #fff;
-        border-radius: 12px;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
         overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         border-collapse: collapse;
+        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
         .table-modern th {
-            background: #002E7F;
-            color: white;
-            padding: 15px;
+            background: rgba(255, 255, 255, 0.02);
+            color: #94A3B8;
+            padding: 16px 20px;
             font-weight: 600;
+            font-size: 12.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             text-align: left;
         }
 
         .table-modern td {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             vertical-align: middle;
+            color: #E2E8F0;
+            transition: 0.2s ease;
+        }
+        
+        .table-modern tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .table-modern tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
         }
 
     /* Professional Status Badges */
     .badge-status {
-        padding: 6px 10px;
-        border-radius: 50px;
-        font-size: 12px;
-        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
         text-transform: uppercase;
     }
 
     .status-saved {
-        background: #e3f2fd;
-        color: #0d47a1;
+        background: rgba(0, 191, 255, 0.1);
+        color: #00BFFF;
+        border: 1px solid rgba(0, 191, 255, 0.2);
     }
-    /* Blue */
+    
     .status-applied {
-        background: #fff3e0;
-        color: #ef6c00;
+        background: rgba(245, 158, 11, 0.1);
+        color: #F59E0B;
+        border: 1px solid rgba(245, 158, 11, 0.2);
     }
-    /* Orange */
+    
     .status-interview {
-        background: #f3e5f5;
-        color: #7b1fa2;
+        background: rgba(168, 85, 247, 0.1);
+        color: #a855f7;
+        border: 1px solid rgba(168, 85, 247, 0.2);
     }
-    /* Purple */
+    
     .status-expired {
-        background: #ffebee;
-        color: #c62828;
+        background: rgba(239, 68, 68, 0.1);
+        color: #EF4444;
+        border: 1px solid rgba(239, 68, 68, 0.2);
     }
-    /* Red */
 
     .btn-action {
-        padding: 6px 12px;
-        border-radius: 6px;
+        padding: 8px 14px;
+        border-radius: 8px;
         font-weight: 600;
         text-decoration: none;
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         font-size: 13px;
-        margin-right: 5px;
-        transition: 0.3s;
+        margin-right: 6px;
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid transparent;
     }
 
     .btn-view {
-        background: #002E7F;
-        color: white;
-        border: none;
+        background: rgba(0, 255, 136, 0.05);
+        color: #00FF88;
+        border-color: rgba(0, 255, 136, 0.2);
     }
 
         .btn-view:hover {
-            background: #001f54;
-            color: white;
+            background: rgba(0, 255, 136, 0.15);
+            color: #00FF88;
+            border-color: #00FF88;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+            text-decoration: none;
         }
 
     .btn-notes {
-        background: #f8f9fa;
-        color: #333;
-        border: 1px solid #ddd;
+        background: transparent;
+        color: #E2E8F0;
+        border-color: rgba(255, 255, 255, 0.2);
     }
 
         .btn-notes:hover {
-            background: #e9ecef;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-1px);
         }
 
     .btn-remove {
-        background: #FF4B4B;
-        color: white;
-        border: none;
+        background: rgba(239, 68, 68, 0.05);
+        color: #EF4444;
+        border-color: rgba(239, 68, 68, 0.2);
     }
 
         .btn-remove:hover {
-            background: #d43f3f;
-            color: white;
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+            border-color: #EF4444;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
         }
 
     .text-muted-small {
-        color: #888;
-        font-size: 12px;
+        color: #94A3B8;
+        font-size: 13px;
         display: block;
+        margin-top: 4px;
+    }
+    
+    .job-title-text {
+        font-weight: 700;
+        color: #fff;
+        font-size: 16px;
+        letter-spacing: -0.2px;
+    }
+    
+    /* Modal Styling */
+    .modal-content {
+        background: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        color: #fff;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-header {
+        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px 16px 0 0;
+        padding: 20px 24px;
+    }
+    
+    .modal-title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    .modal-body {
+        padding: 24px;
+    }
+
+    .modal-footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 16px 24px;
+    }
+    
+    .modal-control {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border-radius: 8px;
+        padding: 12px 14px;
+        transition: all 0.3s ease;
+        width: 100%;
+        outline: none;
+    }
+    
+    .modal-control:focus {
+        background: rgba(0, 0, 0, 0.4);
+        border-color: #00FF88;
+        box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+    }
+    
+    .btn-primary-modal {
+        background: #00FF88;
+        color: #0B0B0B;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    
+    .btn-primary-modal:hover {
+        background: #00DF77;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+    }
+
+    .btn-secondary-modal {
+        background: transparent;
+        color: #E2E8F0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+    
+    .btn-secondary-modal:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+    }
+    
+    .alert-info-dark {
+        background: rgba(18, 18, 18, 0.6);
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        color: #94A3B8;
+        padding: 40px;
+        text-align: center;
+        border-radius: 16px;
+        font-size: 15px;
     }
 </style>
 <h2 class="page-title">My Job Tracker</h2>
 
 @if (Model == null || !Model.Any())
 {
-    <div class="alert alert-info" style="border-radius: 10px;">
+    <div class="alert-info-dark">
         <strong>No saved jobs!</strong> Start exploring and save jobs you're interested in.
     </div>
 }
@@ -126,21 +264,21 @@ else
     <table class="table-modern">
         <thead>
             <tr>
-                <th>Job & Company</th>
-                <th>Status</th>
-                <th>Saved Date</th>
-                <th>Deadline</th>
-                <th>Actions</th>
+                <th style="width: 35%;">Job & Company</th>
+                <th style="width: 15%;">Status</th>
+                <th style="width: 15%;">Saved Date</th>
+                <th style="width: 15%;">Deadline</th>
+                <th style="width: 20%;">Actions</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach (var item in Model)
             {
-                <tr style="@(item.IsExpired ? "opacity: 0.7; background-color: #fafafa;" : "")">
+                <tr style="@(item.IsExpired ? "opacity: 0.5;" : "")">
                     <td>
-                        <span style="font-weight: 700; color: #333; font-size: 16px;">@item.JobTitle</span><br />
-                        <span class="text-muted-small" style="font-size: 12px; color: #777;">@item.CompanyName • @item.Location</span>
+                        <span class="job-title-text">@item.JobTitle</span><br />
+                        <span class="text-muted-small"><i class="fa-solid fa-building" style="margin-right: 4px; color: #00FF88;"></i> @item.CompanyName &bull; @item.Location</span>
                     </td>
                     <td>
                         @if (item.IsExpired)
@@ -152,22 +290,19 @@ else
                         else
                         { <span class="badge-status status-saved">Saved</span>}
                     </td>
-                    <td style="color: #666; font-size: 14px;">@item.SavedAt.ToString("MMM dd, yyyy")</td>
-                    <td style="font-size: 14px;">@(item.Deadline.HasValue ? item.Deadline.Value.ToString("MMM dd, yyyy") : "N/A")</td>
+                    <td style="color: #94A3B8; font-size: 14.5px;">@item.SavedAt.ToString("MMM dd, yyyy")</td>
+                    <td style="font-size: 14.5px;">@(item.Deadline.HasValue ? item.Deadline.Value.ToString("MMM dd, yyyy") : "N/A")</td>
                     <td>
-                        <div style="display: flex; gap: 8px;">
+                        <div style="display: flex; gap: 6px;">
                             <a href="@Url.Action("JobDetails", "Job", new { id = item.JobID })" class="btn-action btn-view">Details</a>
 
-                            <button type="button" class="btn-action"
-                                    style="background: #f0f4ff; color: #002E7F; border: 1px solid #002E7F; border-radius: 5px; padding: 5px 10px;"
-                                    onclick="openNotesModal(@item.JobID, this.getAttribute('data-notes'))" data-notes="@item.Notes">View Notes
-                                <i class="fa fa-sticky-note"></i>
+                            <button type="button" class="btn-action btn-notes"
+                                    onclick="openNotesModal(@item.JobID, this.getAttribute('data-notes'))" data-notes="@item.Notes">Notes
                             </button>
 
                             <a href="@Url.Action("RemoveSavedJob", "SavedJobs", new { jobId = item.JobID })"
                                class="btn-action btn-remove"
-                               style="color: red;"
-                               onclick="return confirm('Remove this job from your list?')">Remove</a>
+                               onclick="return confirm('Remove this job from your list?')">Drop</a>
                         </div>
                     </td>
                 </tr>
@@ -177,25 +312,23 @@ else
 
     <div class="modal fade" id="notesModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 15px; border: none;">
-                <div class="modal-header" style="background: #002E7F; color: white; border-radius: 15px 15px 0 0;">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title">Job Application Notes</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1) grayscale(100%) brightness(200%); opacity: 0.5;"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="modalSavedJobId" />
 
                     <input type="hidden" id="modalSavedSeekerId" value="@Session["UserId"]" />
 
-                    <label class="mb-2" style="font-weight: 600; color: #333;">Personal Remarks / Interview Details:</label>
-                    <textarea id="modalNotesText" class="form-control" rows="5"
-                              placeholder="Example: Interview on 10th April..."
-                              style="border-radius: 10px; border: 1px solid #ddd;"></textarea>
+                    <label class="mb-2" style="font-weight: 600; color: #CBD5E1; font-size: 13.5px;">Personal Remarks / Interview Details:</label>
+                    <textarea id="modalNotesText" class="modal-control" rows="5"
+                              placeholder="Example: Interview on 10th April..."></textarea>
                 </div>
-                <div class="modal-footer" style="border-top: none;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="saveNotes()"
-                            style="background: #002E7F; border: none; padding: 8px 25px;">
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary-modal" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn-primary-modal" onclick="saveNotes()">
                         Save Note
                     </button>
                 </div>

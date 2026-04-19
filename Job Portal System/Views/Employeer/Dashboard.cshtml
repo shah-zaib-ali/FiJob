@@ -10,24 +10,28 @@
 <style>
     /* Dashboard Hero Section */
     .dashboard-hero {
-        background: linear-gradient(to right, #002E7F, #004bb8);
+        background: linear-gradient(135deg, rgba(18, 18, 18, 0.9), rgba(0, 255, 136, 0.05));
         padding: 50px 30px;
         text-align: center;
-        color: white;
-        border-radius: 0 0 20px 20px;
-        box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+        color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.3);
         margin-bottom: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
     }
 
         .dashboard-hero h2 {
             font-size: 28px;
             font-weight: 800;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         .dashboard-hero p {
             font-size: 16px;
-            opacity: 0.9;
+            color: #94A3B8;
             margin: 5px 0;
         }
 
@@ -40,83 +44,120 @@
 
     .stat-box {
         flex: 1;
-        background: white;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        border-radius: 16px;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         text-align: center;
-        border-bottom: 4px solid #002E7F;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 4px solid #00FF88;
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .stat-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        border-color: rgba(255, 255, 255, 0.15);
+        border-bottom-color: #00DF77;
     }
 
     .stat-box h4 {
-        color: #666;
-        font-size: 16px;
+        color: #94A3B8;
+        font-size: 13px;
+        font-weight: 700;
         margin-bottom: 10px;
         text-transform: uppercase;
         letter-spacing: 1px;
     }
 
     .stat-box h2 {
-        font-size: 34px;
-        color: #002E7F;
-        font-weight: bold;
+        font-size: 42px;
+        color: #fff;
+        font-weight: 800;
         margin: 0;
     }
 
     /* Dashboard Card */
     .dashboard-card {
         max-width: 900px;
-        background: #fff;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         margin: auto;
         padding: 35px;
-        border-radius: 20px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         margin-bottom: 40px;
+        color: #E2E8F0;
+    }
+    
+    .dashboard-card:hover {
+        border-color: rgba(255, 255, 255, 0.15);
     }
 
         .dashboard-card h3 {
             font-size: 24px;
-            color: #002E7F;
+            color: #fff;
             margin-bottom: 15px;
         }
 
         .dashboard-card p {
             font-size: 15px;
-            color: #333;
+            color: #CBD5E1;
             margin-bottom: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
             .dashboard-card p strong {
-                color: #002E7F;
+                color: #00FF88;
+            }
+            
+            .dashboard-card p a {
+                color: #00FF88;
+                font-weight: 500;
+                text-decoration: none;
+                transition: 0.3s;
+            }
+            .dashboard-card p a:hover {
+                color: #00DF77;
+                text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
             }
 
     .btn-edit {
-        background: #002E7F;
-        color: #fff;
+        background: #00FF88;
+        color: #0B0B0B;
         padding: 12px 28px;
-        border-radius: 12px;
+        border-radius: 8px;
         font-size: 15px;
         font-weight: 600;
         text-decoration: none;
         transition: 0.3s;
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+        display: inline-block;
     }
 
         .btn-edit:hover {
-            background: #003b99;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            color: white;
+            background: #00DF77;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.35);
+            color: #0B0B0B;
             text-decoration: none;
         }
         
     .chart-container {
         max-width: 900px;
         margin: auto;
-        background: white;
-        padding: 20px;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 30px;
         border-radius: 16px;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+    }
+    
+    .chart-container:hover {
+        border-color: rgba(255, 255, 255, 0.15);
     }
 </style>
 
@@ -141,44 +182,78 @@
 
 <!-- OVERVIEW CHART -->
 <div class="chart-container">
-    <h4 style="color:#002E7F; font-weight:600; text-align:center; margin-bottom:15px;">Recruitment Activity Overview</h4>
+    <h4 style="color:#fff; font-weight:700; text-align:center; margin-bottom:15px; font-size: 18px;">Recruitment Activity Overview - Applications per Job Listing</h4>
     <div id="employerChart"></div>
 </div>
 
 <!-- DASHBOARD DETAILS CARD -->
 <div class="dashboard-card" style="margin-top:40px;">
-    <p><strong>Website:</strong> <a href="@Model.website" target="_blank" style="color:#004bb8;">@Model.website</a></p>
+    <p><strong>Website:</strong> <a href="@Model.website" target="_blank" style="color:#00FF88;">@Model.website</a></p>
     <p><strong>Description:</strong> @Model.company_description</p>
     <div style="margin-top: 30px; text-align: center;">
-        <a href="/Employeer/MyProfile" class="btn-edit">Edit Profile / Update Info</a>
+        <a href="/Employeer/MyProfile" class="btn-edit"><i class="fa-solid fa-pen-to-square" style="margin-right: 8px;"></i> Edit Profile / Update Info</a>
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        
+        var jobNames = @Html.Raw(ViewBag.JobTitles ?? "[]");
+        var applicationCounts = @Html.Raw(ViewBag.JobApps ?? "[]");
+
         var options = {
             series: [{
-                name: 'Data',
-                data: [@ViewBag.TotalApplications, @ViewBag.TotalJobsPosted]
+                name: 'Applications Received',
+                data: applicationCounts
             }],
             chart: {
                 type: 'bar',
-                height: 350,
-                toolbar: { show: false }
+                height: 380,
+                toolbar: { show: false },
+                background: 'transparent'
+            },
+            theme: {
+                mode: 'dark'
             },
             plotOptions: {
                 bar: {
-                    borderRadius: 8,
-                    horizontal: false,
-                    columnWidth: '40%',
+                    borderRadius: 6,
+                    horizontal: true,
+                    barHeight: '60%',
                 }
             },
-            colors: ['#002E7F', '#10b981'],
-            dataLabels: { enabled: true, style: { fontSize: '14px' } },
-            xaxis: {
-                categories: ['Applications Received', 'Jobs Posted'],
+            colors: ['#00FF88'],
+            dataLabels: { 
+                enabled: true, 
+                style: { fontSize: '13px', colors: ['#0b0b0b'] } 
             },
-            tooltip: { theme: 'light' }
+            xaxis: {
+                categories: jobNames,
+                labels: { style: { colors: '#94A3B8' } },
+                axisBorder: { color: 'rgba(255, 255, 255, 0.1)' },
+                axisTicks: { color: 'rgba(255, 255, 255, 0.1)' },
+                title: { text: "Number of Applications", style: { color: "#CBD5E1" } }
+            },
+            yaxis: {
+                labels: { 
+                    style: { colors: '#94A3B8', fontSize: '13px' },
+                    maxWidth: 200,
+                    formatter: function (value) {
+                        return value;
+                    }
+                }
+            },
+            grid: {
+                borderColor: 'rgba(255, 255, 255, 0.05)'
+            },
+            tooltip: { 
+                theme: 'dark',
+                y: {
+                    formatter: function(val) {
+                        return val + " applications"
+                    }
+                }
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#employerChart"), options);

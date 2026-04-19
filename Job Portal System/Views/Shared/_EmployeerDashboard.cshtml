@@ -22,27 +22,47 @@
     <style>
         body {
             font-family: 'Poppins', Arial, sans-serif;
-            background: #f4f6f8;
+            background: #0B0B0B;
             margin: 0;
             padding: 0;
+            color: #E2E8F0;
         }
 
         /* HEADER */
         .navbar {
-            background: #002e7f;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 8px 16px;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+            padding: 10px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .navbar-brand {
-            font-weight: 600;
-            font-size: 20px;
+            font-weight: 700;
+            font-size: 22px;
             letter-spacing: 0.5px;
+            color: #FFFFFF !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand span {
+            color: #00FF88;
         }
 
         .navbar-nav .nav-link {
-            color: #fff !important;
+            color: #CBD5E1 !important;
             font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #00FF88 !important;
+            background: rgba(0, 255, 136, 0.08);
         }
 
         .navbar-brand img {
@@ -55,152 +75,230 @@
         /* SIDEBAR */
         .sidebar {
             height: 100vh;
-            width: 200px;
-            background: #ffffff;
+            width: 240px;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(12px);
             position: fixed;
-            top: 56px;
+            top: 60px;
             left: 0;
-            padding-top: 20px;
-            border-right: 1px solid #e0e0e0;
-            box-shadow: 2px 0 12px rgba(0,0,0,0.05);
+            padding-top: 24px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+            z-index: 100;
         }
 
             .sidebar a {
-                color: #0047b3;
-                padding: 12px 15px;
+                color: #94A3B8;
+                padding: 12px 18px;
                 display: flex;
                 align-items: center;
                 text-decoration: none;
-                font-size: 14px;
-                border-radius: 8px;
-                margin: 5px 10px;
-                transition: 0.3s;
+                font-size: 14.5px;
+                font-weight: 500;
+                border-radius: 10px;
+                margin: 4px 14px;
+                transition: all 0.3s ease;
+                position: relative;
             }
 
                 .sidebar a i {
-                    margin-right: 10px;
+                    margin-right: 14px;
                     font-size: 16px;
+                    width: 20px;
+                    text-align: center;
+                    transition: all 0.3s ease;
                 }
 
-                .sidebar a:hover {
-                    background: #0047b3;
-                    color: #fff;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                .sidebar a:hover, .sidebar a.active {
+                    background: rgba(0, 255, 136, 0.08);
+                    color: #00FF88;
+                }
+
+                .sidebar a:hover i, .sidebar a.active i {
+                    color: #00FF88;
+                    text-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+                    transform: scale(1.1);
                 }
 
         /* CONTENT AREA */
         .content-area {
-            margin-left: 200px;
-            margin-top: 70px;
-            padding: 25px;
+            margin-left: 240px;
+            margin-top: 60px;
+            padding: 32px;
+            min-height: calc(100vh - 60px);
         }
 
         .content-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            margin-bottom: 25px;
+            background: rgba(18, 18, 18, 0.6);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
         }
 
         h2 {
-            color: #0047b3;
-            font-weight: 600;
-            margin-bottom: 20px;
+            color: #FFFFFF;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
         }
 
         /* FOOTER */
         .footer {
-            background: #002e7f;
-            color: #fff;
-            padding: 10px;
+            background: #121212;
+            color: #64748B;
+            padding: 12px;
             text-align: center;
             position: fixed;
-            width: calc(100% - 200px);
+            width: calc(100% - 240px);
             bottom: 0;
-            left: 200px;
-            box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
-            border-radius: 10px 0 0 0;
-            font-size: 10px;
+            left: 240px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
         }
 
         /* BUTTONS */
         .btn {
             border-radius: 8px;
-            font-weight: 500;
-            padding: 6px 12px;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: 600;
+            padding: 10px 18px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn:focus {
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.2) !important;
+            outline: none;
         }
 
         .btn-primary {
-            background: linear-gradient(145deg, #0066cc, #0047b3);
-            color: #fff;
+            background: #00FF88;
+            color: #0B0B0B;
             border: none;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
         }
 
             .btn-primary:hover {
-                background: linear-gradient(145deg, #0047b3, #003366);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                background: #00DF77;
+                color: #0B0B0B;
+                transform: translateY(-2px) scale(1.02);
+                box-shadow: 0 6px 20px rgba(0, 255, 136, 0.3);
             }
 
         .btn-success {
-            background: linear-gradient(145deg, #34d058, #28a745);
-            color: #fff;
-            border: none;
+            background: transparent;
+            color: #00FF88;
+            border: 1px solid #00FF88;
         }
 
             .btn-success:hover {
-                background: linear-gradient(145deg, #28a745, #218838);
+                background: rgba(0, 255, 136, 0.1);
+                color: #00FF88;
+                border-color: #00FF88;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                box-shadow: 0 4px 16px rgba(0, 255, 136, 0.15);
             }
 
         .btn-danger {
-            background: linear-gradient(145deg, #e55353, #dc3545);
-            color: #fff;
-            border: none;
+            background: transparent;
+            color: #FF4D4D;
+            border: 1px solid rgba(255, 77, 77, 0.5);
         }
 
             .btn-danger:hover {
-                background: linear-gradient(145deg, #dc3545, #c82333);
+                background: rgba(255, 77, 77, 0.1);
+                border-color: #FF4D4D;
+                color: #FF4D4D;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             }
 
         .btn-info {
-            background: linear-gradient(145deg, #38bdf8, #1da1f2);
-            color: #fff;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: #E2E8F0;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
             .btn-info:hover {
-                background: linear-gradient(145deg, #1da1f2, #0d8ddb);
+                background: rgba(255, 255, 255, 0.1);
+                color: #FFFFFF;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             }
 
         table {
             width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 10px;
         }
 
             table th {
-                background: #0047b3;
-                color: #fff;
+                background: #1A1A1A;
+                color: #94A3B8;
                 font-weight: 600;
-                padding: 10px;
-                border-radius: 8px;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 14px 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             }
+            
+            table th:first-child { border-radius: 12px 0 0 0; }
+            table th:last-child { border-radius: 0 12px 0 0; }
 
             table td {
-                padding: 10px;
+                padding: 16px;
                 vertical-align: middle;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                color: #E2E8F0;
+                font-size: 14px;
             }
 
-            table tr:hover {
-                background: #f1f7ff;
+            table tr:hover td {
+                background: rgba(255, 255, 255, 0.02);
             }
+            
+            table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .badge-pill.badge-danger {
+            background: #FF4D4D;
+            color: #FFF;
+            font-size: 11px;
+            padding: 3px 8px;
+            margin-left: auto !important;
+            box-shadow: 0 2px 8px rgba(255, 77, 77, 0.3);
+        }
+        
+        /* FORMS */
+        .form-control, .form-select {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #FFF;
+            border-radius: 8px;
+            padding: 12px 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #00FF88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+            color: #FFF;
+        }
+        
+        .control-label, label {
+            color: #CBD5E1;
+            font-weight: 500;
+            font-size: 13.5px;
+            margin-bottom: 6px;
+        }
     </style>
 </head>
 <body>
@@ -208,7 +306,7 @@
     <!-- HEADER / TOP NAVBAR -->
     <nav class="navbar navbar-expand navbar-dark fixed-top">
         <a class="navbar-brand" href="#">
-            FiJob
+            Fi<span>Job</span>
         </a>
 
         <ul class="navbar-nav ml-auto">
@@ -226,7 +324,7 @@
         <a href="/Job/ManageJobs"><i class="fa-solid fa-clipboard-list"></i> Manage Jobs</a>
         <a href="@Url.Action("Inbox", "Chat")">
             <i class="fas fa-envelope"></i> <span>Messages</span>
-            <span class="badge badge-pill badge-danger ml-2" id="sidebarMsgBadge" style="display:none;">0</span>
+            <span class="badge badge-pill badge-danger ml-2" id="sidebarMsgBadge" style="display:none; background-color: #FF4D4D; color: white;">0</span>
         </a>
     </div>
 
@@ -257,18 +355,53 @@
             // SignalR Connection
             var chat = $.connection.chatHub;
             
+            // Function to check initial badge counts via AJAX
+            function fetchInitialBadgeCounts() {
+                $.ajax({
+                    url: '/Chat/GetUnreadCounts',
+                    type: 'GET',
+                    success: function (data) {
+                        if (data.messagesCount > 0) {
+                            $('#sidebarMsgBadge').text(data.messagesCount).css('display', 'inline-block');
+                        } else {
+                            $('#sidebarMsgBadge').hide();
+                        }
+                        
+                        if (data.notificationsCount && data.notificationsCount > 0) {
+                            $('#sidebarNotifBadge').text(data.notificationsCount).css('display', 'inline-block');
+                        } else {
+                            $('#sidebarNotifBadge').hide();
+                        }
+                    }
+                });
+            }
+
             chat.client.updateMessageBadge = function (receiverId) {
                 var currentUserId = @((Session["UserId"] != null) ? Session["UserId"].ToString() : "0");
                 if (receiverId == currentUserId) {
                     var badge = $('#sidebarMsgBadge');
                     var currentVal = parseInt(badge.text()) || 0;
                     currentVal += 1;
-                    badge.text(currentVal).show();
+                    badge.text(currentVal).css('display', 'inline-block');
+                }
+            };
+            
+            chat.client.updateNotificationBadge = function (receiverId) {
+                // Implement if Employer Notifications are added in future
+                var currentUserId = @((Session["UserId"] != null) ? Session["UserId"].ToString() : "0");
+                if (receiverId == currentUserId) {
+                    var badge = $('#sidebarNotifBadge');
+                    if(badge.length) {
+                        var currentVal = parseInt(badge.text()) || 0;
+                        currentVal += 1;
+                        badge.text(currentVal).css('display', 'inline-block');
+                    }
                 }
             };
 
             $.connection.hub.start().done(function () {
                 console.log("Connected to Real-time Hub");
+                fetchInitialBadgeCounts();
             });
         });
     </script>

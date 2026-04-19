@@ -89,8 +89,9 @@
 
 <style>
     body {
-        font-family: "Poppins", sans-serif !important;
-        background-color: #f8fafc;
+        font-family: inherit !important;
+        background-color: #0b0b0b;
+        color: #e2e8f0;
     }
 
     .job-details-container {
@@ -108,35 +109,37 @@
     .job-title {
         font-size: 32px;
         font-weight: 700;
-        color: #002e7f;
+        color: #fff;
         margin-bottom: 5px;
+        letter-spacing: -0.5px;
     }
 
     .job-subtitle {
-        color: #64748b;
-        font-size: 14px;
+        color: #94a3b8;
+        font-size: 14.5px;
         margin-bottom: 30px;
     }
 
     /* MAIN CARD */
     .job-details-card {
-        background: #ffffff;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         padding: 35px;
         border-radius: 20px;
-        border: 1px solid #e2e8f0;
-        box-shadow: 0px 10px 25px rgba(0,0,0,0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
     }
 
     .section-heading {
         font-size: 18px;
-        font-weight: 600;
-        color: #0f172a;
+        font-weight: 700;
+        color: #fff;
         margin-bottom: 15px;
     }
 
     .description-text {
         line-height: 1.7;
-        color: #475569;
+        color: #e2e8f0;
         margin-bottom: 25px;
         font-size: 15px;
     }
@@ -149,65 +152,76 @@
 
     .detail-label {
         font-weight: 600;
-        color: #002e7f;
+        color: #94a3b8;
         display: block;
         font-size: 13px;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
+        margin-bottom: 4px;
     }
 
     .detail-value {
-        color: #334155;
+        color: #00FF88;
         font-size: 16px;
+        font-weight: 500;
     }
 
     /* EMPLOYER CARD */
     .employer-card {
-        background: white;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
         padding: 25px;
         border-radius: 20px;
-        border: 1px solid #e2e8f0;
+        border: 1px solid rgba(255, 255, 255, 0.08);
         align-self: start;
         text-align: center;
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
     }
 
     .employer-title {
         font-size: 16px;
         font-weight: 600;
-        color: #64748b;
+        color: #fff;
         margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 
     .employer-avatar {
         width: 60px;
         height: 60px;
-        background: #002e7f;
-        color: white;
+        background: rgba(0, 255, 136, 0.1);
+        color: #00FF88;
+        border: 1px solid rgba(0, 255, 136, 0.2);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 15px;
         font-weight: 700;
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .emp-name {
         font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 2px;
+        color: #fff;
+        margin-bottom: 4px;
+        font-size: 16px;
     }
 
     .emp-email {
-        font-size: 13px;
-        color: #64748b;
+        font-size: 13.5px;
+        color: #94a3b8;
     }
 
     .trust-badge {
         margin-top: 20px;
         font-size: 12px;
-        color: #10b981;
+        color: #00FF88;
         font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
     }
 
     /* ACTIONS */
@@ -215,62 +229,99 @@
         display: flex;
         gap: 15px;
         margin-top: 10px;
+        flex-wrap: wrap;
     }
 
     .msg-btn {
-        background: #10b981;
+        background: transparent;
+        border: 1px solid rgba(0, 255, 136, 0.4);
         padding: 14px 25px;
         border-radius: 12px;
-        color: white;
+        color: #00FF88;
         text-decoration: none;
         font-weight: 600;
         transition: 0.3s;
         text-align: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
     }
 
         .msg-btn:hover {
-            background: #059669;
-            color: white;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00FF88;
+            border-color: #00FF88;
+            transform: translateY(-2px);
             text-decoration: none;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(16,185,129,0.3);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.15);
         }
 
     .apply-btn {
-        background: #002e7f;
+        background: #00FF88;
         padding: 14px 30px;
         border-radius: 12px;
-        color: white;
+        color: #0b0b0b;
         text-decoration: none;
         font-weight: 600;
         transition: 0.3s;
         flex: 1;
         text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
     }
 
         .apply-btn:hover {
-            background: #001e5c;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,46,127,0.3);
+            background: #00DF77;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 255, 136, 0.3);
+            color: #0b0b0b;
+            text-decoration: none;
         }
 
     .save-btn {
-        background: #f1f5f9;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
         padding: 14px 25px;
         border-radius: 12px;
-        color: #002e7f;
+        color: #e2e8f0;
         font-weight: 600;
         text-decoration: none;
         transition: 0.3s;
     }
 
         .save-btn:hover {
-            background: #e2e8f0;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            text-decoration: none;
+            transform: translateY(-2px);
         }
+        
+    .btn-disabled {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        padding: 14px 25px;
+        border-radius: 12px;
+        color: #64748b;
+        font-weight: 600;
+        cursor: not-allowed;
+    }
 
     .divider {
         margin: 30px 0;
         border: 0;
-        border-top: 1px solid #f1f5f9;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .main-content-grid {
+            grid-template-columns: 1fr;
+        }
+        .job-actions {
+            flex-direction: column;
+        }
+        .apply-btn, .save-btn, .msg-btn, .btn-disabled {
+            width: 100%;
+            justify-content: center;
+        }
     }
 </style>

@@ -14,7 +14,7 @@
 
     <div class="add-skill-box">
         <form method="post" action="/JobSeeker/AddSkill" class="skill-form">
-            <input name="SkillName" class="skill-input" placeholder="Enter a new skill..." required />
+            <input name="SkillName" class="skill-input" placeholder="Enter a new skill..." required autocomplete="off" />
             <button class="skill-add-btn">Add Skill</button>
         </form>
     </div>
@@ -53,7 +53,7 @@
             else
             {
                 <div class="no-jobs-alert">
-                    No matching jobs found. Try adding more skills!
+                    <i class="fa-solid fa-ghost"></i> No matching jobs found at this time. Try adding more skills!
                 </div>
             }
         </div>
@@ -63,82 +63,100 @@
 
 <style>
     body {
-        font-family: "Poppins", sans-serif !important;
+        font-family: inherit !important;
+        background-color: #0b0b0b;
+        color: #e2e8f0;
     }
 
     .skills-container {
-        max-width: 850px;
+        max-width: 900px;
         margin: 0 auto;
-        padding: 25px;
+        padding: 30px;
     }
 
     /* HEADER */
     .title {
-        font-size: 30px;
-        font-weight: 700;
-        color: #002e7f;
+        font-size: 28px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
     }
 
     .subtitle {
-        margin-top: -8px;
-        color: #64748b;
-        font-size: 14px;
+        color: #94a3b8;
+        font-size: 15px;
+        margin-bottom: 25px;
     }
 
-    /* ADD SKILL CARD */
+    /* ADD BOX */
     .add-skill-box {
-        background: #ffffff;
-        border-left: 5px solid #002e7f;
-        padding: 22px;
-        border-radius: 14px;
-        margin-top: 25px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        margin-bottom: 40px;
     }
 
     .skill-form {
         display: flex;
-        gap: 10px;
+        gap: 15px;
     }
 
     .skill-input {
         flex: 1;
-        padding: 12px 16px;
-        font-size: 15px;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 10px;
-        border: 1px solid #cbd5e1;
+        padding: 12px 18px;
+        font-size: 15px;
+        color: #fff;
+        transition: 0.3s;
         outline: none;
     }
 
         .skill-input:focus {
-            border-color: #002e7f;
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #00FF88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
         }
 
     .skill-add-btn {
-        background: #002e7f;
-        color: white;
+        background: #00FF88;
+        color: #0b0b0b;
         border: none;
-        padding: 12px 20px;
+        padding: 12px 28px;
         border-radius: 10px;
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
-        transition: 0.2s;
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
     }
 
         .skill-add-btn:hover {
-            background: #001e5c;
+            background: #00DF77;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.35);
         }
 
-    /* SECTION TITLE */
-    .section-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-top: 35px;
-        margin-bottom: 15px;
-        color: #002e7f;
+    /* TAGS */
+    .skills-section {
+        margin-bottom: 50px;
     }
 
-    /* SKILLS LIST */
+    .section-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
     .skills-tags-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -146,108 +164,146 @@
     }
 
     .skill-tag-box {
-        display: flex;
+        display: inline-flex;
         align-items: center;
-        background: white;
-        border: 1px solid #dbeafe;
-        padding: 8px 14px;
-        border-radius: 25px;
         gap: 10px;
-        transition: 0.2s;
+        background: rgba(0, 255, 136, 0.05);
+        border: 1px solid rgba(0, 255, 136, 0.2);
+        padding: 8px 16px;
+        border-radius: 30px;
+        color: #e2e8f0;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
         .skill-tag-box:hover {
-            border-color: #002e7f;
-            background: #f0f6ff;
+            background: rgba(0, 255, 136, 0.15);
+            border-color: #00FF88;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+            color: #fff;
         }
 
-    .skill-text {
-        font-size: 14px;
-        font-weight: 500;
-        color: #002e7f;
-    }
-
     .skill-delete-btn {
-        font-size: 13px;
-        color: #ef4444;
-        padding: 2px 6px;
+        background: transparent;
+        color: #94a3b8;
+        border: none;
+        width: 22px;
+        height: 22px;
         border-radius: 50%;
-        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
         font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
         transition: 0.2s;
     }
 
         .skill-delete-btn:hover {
-            background: #fee2e2;
-            color: #b91c1c;
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+            transform: scale(1.1);
         }
 
+    /* JOBS */
     .jobs-section {
-        margin-top: 50px;
-        padding-top: 20px;
-        border-top: 1px dashed #cbd5e1;
+        margin-top: 30px;
     }
 
     .jobs-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 15px;
-        margin-top: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
     }
 
     .job-card {
-        background: white;
-        padding: 20px;
-        border-radius: 12px;
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 24px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        border: 1px solid #e2e8f0;
-        transition: 0.3s;
+        transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
         .job-card:hover {
-            transform: translateY(-2px);
-            border-color: #002e7f;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 16px 40px rgba(0, 255, 136, 0.1);
         }
 
     .job-title {
-        margin: 0;
-        font-size: 17px;
-        font-weight: 600;
-        color: #1e293b;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 6px;
+        letter-spacing: -0.2px;
     }
 
     .job-company {
-        margin: 5px 0 0 0;
-        font-size: 13px;
-        color: #64748b;
+        font-size: 14px;
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
+        .job-company i {
+            color: #00FF88;
+        }
+
     .view-job-btn {
-        background: #f0f6ff;
-        color: #002e7f;
-        text-decoration: none;
-        padding: 8px 16px;
+        background: transparent;
+        color: #00FF88;
+        border: 1px solid rgba(0, 255, 136, 0.4);
+        padding: 10px;
+        text-align: center;
+        display: block;
         border-radius: 8px;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 600;
-        transition: 0.2s;
+        text-decoration: none;
+        transition: 0.3s;
+        margin-top: auto;
     }
 
         .view-job-btn:hover {
-            background: #002e7f;
-            color: white;
+            background: rgba(0, 255, 136, 0.15);
+            border-color: #00FF88;
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+            color: #00FF88;
+            transform: translateY(-1px);
         }
 
     .no-jobs-alert {
-        padding: 20px;
-        background: #f8fafc;
-        border-radius: 10px;
-        text-align: center;
+        background: rgba(255, 255, 255, 0.03);
         color: #94a3b8;
-        font-style: italic;
+        padding: 40px 20px;
+        border-radius: 16px;
+        font-size: 15px;
+        width: 100%;
+        grid-column: 1 / -1;
+        text-align: center;
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .no-jobs-alert i {
+        font-size: 28px;
+        color: rgba(255, 255, 255, 0.2);
     }
 </style>

@@ -458,31 +458,29 @@ namespace Job_Portal_System.Controllers
         {
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 
-            string appId = "d3f324d5";
-            string appKey = "fbb43e3dc7f6fd38a31a557e535bbc6f";
-            string country = "gb";
-            string url = $"https://api.adzuna.com/v1/api/jobs/{country}/search/{page}?app_id={appId}&app_key={appKey}&results_per_page=20";
+            // Updated endpoint to pull Pakistan jobs via JobDataApi.com
+            string url = "https://jobdataapi.com/api/jobs/?country_code=PK";
 
             HttpResponseMessage response = await client.GetAsync(url);
 
-            // Read raw bytes and manually decode — avoids ALL encoding name lookups
+            // Read raw bytes and decode
             byte[] rawBytes = await response.Content.ReadAsByteArrayAsync();
             string jsonResponse = System.Text.Encoding.UTF8.GetString(rawBytes);
 
-            AdzunaResponse data;
+            JobDataApiResponse data;
             using (var sr = new System.IO.StringReader(jsonResponse))
             using (var reader = new Newtonsoft.Json.JsonTextReader(sr))
             {
                 var serializer = new Newtonsoft.Json.JsonSerializer();
-                data = serializer.Deserialize<AdzunaResponse>(reader);
+                data = serializer.Deserialize<JobDataApiResponse>(reader);
             }
 
-            var jobList = data?.results?.Select(r => new ExternalJob
+            var jobList = data?.data?.Select(r => new ExternalJob
             {
-                Title = r.title,
-                Company = r.company?.display_name ?? "Company Undisclosed",
-                Location = r.location?.display_name ?? "Location Undisclosed",
-                RedirectUrl = r.redirect_url
+                Title = r.title ?? "Unknown Title",
+                Company = r.company ?? "Company Undisclosed",
+                Location = r.location ?? "Location Undisclosed",
+                RedirectUrl = r.original_link ?? "#"
             }).ToList() ?? new List<ExternalJob>();
 
             return View(jobList);

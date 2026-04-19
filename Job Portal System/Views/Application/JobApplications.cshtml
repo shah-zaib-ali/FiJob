@@ -8,27 +8,30 @@
 <style>
     .page-header {
         text-align: center;
-        margin-bottom: 28px;
+        margin-bottom: 30px;
     }
 
         .page-header h2 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #002E7F;
-            margin-bottom: 4px;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
         }
 
         .page-header p {
-            color: #6b7280;
-            font-size: 14px;
+            color: #94A3B8;
+            font-size: 15px;
         }
 
     .table-card {
-        max-width: 1100px;
+        max-width: 1050px;
         margin: 0 auto;
-        background: #fff;
-        border-radius: 14px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+        background: rgba(18, 18, 18, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.2);
         overflow: hidden;
     }
 
@@ -39,194 +42,285 @@
         }
 
         .table-card thead th {
-            background: #f8faff;
-            color: #002E7F;
-            font-size: 12px;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.02);
+            color: #94A3B8;
+            font-size: 12.5px;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 13px 16px;
-            border-bottom: 1px solid #e8edf5;
+            letter-spacing: 0.8px;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             text-align: left;
         }
 
         .table-card tbody td {
-            padding: 14px 16px;
-            border-bottom: 1px solid #f0f4fa;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             vertical-align: middle;
-            font-size: 14px;
-            color: #1f2937;
+            font-size: 14.5px;
+            color: #E2E8F0;
+            transition: 0.2s ease;
         }
 
         .table-card tbody tr:last-child td {
             border-bottom: none;
         }
 
-        .table-card tbody tr:hover {
-            background: #f8fbff;
+        .table-card tbody tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
         }
 
     .seeker-name {
         font-weight: 600;
-        font-size: 14px;
-        color: #111827;
+        font-size: 15.5px;
+        color: #fff;
+        letter-spacing: -0.2px;
+        margin-bottom: 4px;
     }
 
     .seeker-bio {
-        font-size: 12px;
-        color: #6b7280;
+        font-size: 13px;
+        color: #94A3B8;
         margin-top: 2px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 160px;
+        max-width: 180px;
     }
 
     .status-badge {
         display: inline-block;
-        padding: 4px 10px;
+        padding: 5px 12px;
         border-radius: 20px;
-        font-size: 11px;
+        font-size: 11.5px;
         font-weight: 600;
+        letter-spacing: 0.5px;
     }
 
     .status-approved {
-        background: #dcfce7;
-        color: #15803d;
+        background: rgba(0, 255, 136, 0.1);
+        color: #00FF88;
+        border: 1px solid rgba(0, 255, 136, 0.2);
     }
 
     .status-rejected {
-        background: #fee2e2;
-        color: #b91c1c;
+        background: rgba(239, 68, 68, 0.1);
+        color: #EF4444;
+        border: 1px solid rgba(239, 68, 68, 0.2);
     }
 
     .status-pending {
-        background: #fef3c7;
-        color: #b45309;
+        background: rgba(245, 158, 11, 0.1);
+        color: #F59E0B;
+        border: 1px solid rgba(245, 158, 11, 0.2);
     }
 
     .status-scheduled {
-        background: #dbeafe;
-        color: #1d4ed8;
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
     .resume-box {
-        width: 48px;
-        height: 58px;
-        background: #f1f5fb;
-        border: 1px solid #d1ddf0;
-        border-radius: 6px;
+        width: 54px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 11px;
-        color: #6b7280;
+        font-size: 12px;
+        color: #94A3B8;
         font-weight: 600;
         cursor: pointer;
+        text-decoration: none;
+        transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    a.resume-box:hover {
+        background: rgba(0, 255, 136, 0.05);
+        color: #00FF88;
+        border-color: #00FF88;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+        text-decoration: none;
     }
 
     .actions {
         display: flex;
-        gap: 6px;
+        gap: 8px;
         flex-wrap: wrap;
     }
 
     .btn-action {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
-        padding: 6px 12px;
-        border-radius: 7px;
-        font-size: 12px;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 13px;
         font-weight: 600;
-        border: none;
+        border: 1px solid transparent;
         cursor: pointer;
         text-decoration: none;
-        transition: opacity .15s;
+        transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        line-height: 1.4;
     }
 
         .btn-action:hover {
-            opacity: .85;
+            transform: translateY(-1px);
+            text-decoration: none;
         }
 
     .btn-approve {
-        background: #dcfce7;
-        color: #15803d;
+        background: rgba(0, 255, 136, 0.05);
+        color: #00FF88;
+        border-color: rgba(0, 255, 136, 0.2);
+    }
+    
+    .btn-approve:hover {
+        background: rgba(0, 255, 136, 0.15);
+        border-color: #00FF88;
+        color: #00FF88;
+        box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
     }
 
     .btn-reject {
-        background: #fee2e2;
-        color: #b91c1c;
+        background: rgba(239, 68, 68, 0.05);
+        color: #EF4444;
+        border-color: rgba(239, 68, 68, 0.2);
+    }
+    
+    .btn-reject:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: #EF4444;
+        color: #EF4444;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
     }
 
     .btn-schedule {
-        background: #dbeafe;
-        color: #1d4ed8;
+        background: rgba(59, 130, 246, 0.05);
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.2);
+    }
+    
+    .btn-schedule:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: #3b82f6;
+        color: #3b82f6;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
     }
 
     .btn-message {
-        background: #ede9fe;
-        color: #6d28d9;
+        background: rgba(168, 85, 247, 0.05);
+        color: #a855f7;
+        border-color: rgba(168, 85, 247, 0.2);
+    }
+    
+    .btn-message:hover {
+        background: rgba(168, 85, 247, 0.15);
+        border-color: #a855f7;
+        color: #a855f7;
+        box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
     }
 
     /* Modal */
     .modal-content {
-        border-radius: 14px;
-        border: none;
+        background: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+        color: #E2E8F0;
     }
 
     .modal-header {
-        background: #f8faff;
-        border-bottom: 1px solid #e8edf5;
-        border-radius: 14px 14px 0 0;
-        padding: 16px 20px;
+        background: rgba(255, 255, 255, 0.02);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px 16px 0 0;
+        padding: 20px 24px;
     }
 
-        .modal-header h5 {
-            font-size: 16px;
+        .modal-header .modal-title {
+            font-size: 18px;
             font-weight: 700;
-            color: #002E7F;
+            color: #fff;
             margin: 0;
+            letter-spacing: -0.3px;
+        }
+
+        .modal-header .close {
+            color: #fff;
+            opacity: 0.5;
+            text-shadow: none;
+            transition: 0.3s;
+        }
+        
+        .modal-header .close:hover {
+            color: #EF4444;
+            opacity: 1;
         }
 
     .modal-body {
-        padding: 20px;
+        padding: 24px;
     }
 
     .modal-footer {
-        border-top: 1px solid #e8edf5;
-        padding: 14px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 16px 24px;
+    }
+    
+    .modal-btn-cancel {
+        background: transparent;
+        color: #E2E8F0;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+    .modal-btn-cancel:hover {
+        background: rgba(255, 255, 255, 0.05);
     }
 
     .form-group label {
-        font-size: 12px;
+        font-size: 13.5px;
         font-weight: 600;
-        color: #374151;
-        margin-bottom: 5px;
+        color: #CBD5E1;
+        margin-bottom: 8px;
         display: block;
     }
 
     .form-control {
         border-radius: 8px;
-        border: 1px solid #d1d5db;
-        font-size: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 14.5px;
+        padding: 12px 14px;
+        transition: all 0.3s ease;
     }
 
         .form-control:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #00FF88;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.15);
+            color: #fff;
+            outline: none;
         }
 
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        gap: 20px;
     }
 
     .empty-state {
         text-align: center;
         padding: 60px 20px;
-        color: #9ca3af;
+        color: #94A3B8;
         font-size: 15px;
     }
 </style>
@@ -293,27 +387,27 @@ else
                             <span class="status-badge @statusClass">@app.status</span>
                         </td>
 
-                        <td style="color:#6b7280;font-size:13px;">
+                        <td style="color:#94A3B8;font-size:14px;">
                             @(app.applied_date.HasValue ? app.applied_date.Value.ToString("dd MMM yyyy") : "--")
                         </td>
 
                         <td>
                             <div class="actions">
                                 <a href="@Url.Action("UpdateStatus", "Application", new { id = app.application_id, status = "APPROVED" })"
-                                   class="btn-action btn-approve">✓ Approve</a>
+                                   class="btn-action btn-approve"><i class="fa-solid fa-check"></i> Approve</a>
 
                                 <button class="btn-action btn-reject"
                                         onclick="rejectApplication(@app.application_id)">
-                                    ✕ Reject
+                                    <i class="fa-solid fa-xmark"></i> Reject
                                 </button>
 
                                 <button class="btn-action btn-schedule"
                                         onclick="openScheduleModal(@app.application_id, '@app.JOB_SEEKER_PROFILE.USER.full_name')">
-                                    ⊕ Schedule
+                                    <i class="fa-regular fa-calendar-plus"></i> Schedule
                                 </button>
 
                                 <a href="@Url.Action("Index", "Chat", new { receiverId = app.seeker_id })"
-                                   class="btn-action btn-message">✉ Message</a>
+                                   class="btn-action btn-message"><i class="fa-regular fa-message"></i> Message</a>
                             </div>
                         </td>
                     </tr>
@@ -367,17 +461,17 @@ else
                 <div class="form-row">
                     <div class="form-group">
                         <label>Interviewer Name</label>
-                        <input type="text" id="intInterviewer" class="form-control" placeholder="Full name" />
+                        <input type="text" id="intInterviewer" class="form-control" placeholder="Full name" autocomplete="off" />
                     </div>
                     <div class="form-group">
                         <label>Interviewer Email</label>
-                        <input type="email" id="intEmail" class="form-control" placeholder="email@company.com" />
+                        <input type="email" id="intEmail" class="form-control" placeholder="email@company.com" autocomplete="off" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Location / Meeting Link</label>
-                    <input type="text" id="intLocation" class="form-control" placeholder="e.g. Zoom link or office address" />
+                    <input type="text" id="intLocation" class="form-control" placeholder="e.g. Zoom link or office address" autocomplete="off" />
                 </div>
 
                 <div class="form-group">
@@ -392,7 +486,7 @@ else
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="modal-btn-cancel" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-primary" onclick="submitSchedule()">Save Interview</button>
             </div>
 
