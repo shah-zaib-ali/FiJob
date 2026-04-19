@@ -1,0 +1,56 @@
+@model Job_Portal_System.ViewModel.EmployerProfileViewModel
+@{
+    ViewBag.Title = "Create Employer Profile";
+    Layout = "~/Views/Shared/_EmployerLayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h3 class="mb-0">Create Employer Profile</h3>
+                </div>
+                <div class="card-body p-5">
+                    
+                    @using (Html.BeginForm("CreateProfile", "Employeer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.CompanyName, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control rounded-pill", placeholder = "Enter Company Name" })
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.Industry, new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(m => m.Industry, new { @class = "form-control rounded-pill", placeholder = "e.g., IT, Finance, Healthcare" })
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.CompanyDescription, new { @class = "form-label fw-bold" })
+                            @Html.TextAreaFor(m => m.CompanyDescription, new { @class = "form-control rounded-3", rows = 4, placeholder = "Tell us about your company..." })
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.Website, new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.Website, new { @class = "form-control rounded-pill", placeholder = "https://www.example.com" })
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.Location, new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.Location, new { @class = "form-control rounded-pill", placeholder = "City, Country" })
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Create Profile</button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

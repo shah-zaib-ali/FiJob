@@ -1,0 +1,87 @@
+@model Job_Portal_System.ViewModel.JobSeekerProfileViewModel
+@{
+    ViewBag.Title = "Create Profile";
+    Layout = "~/Views/Shared/_JobSeekerDashboard.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h3 class="mb-0">Create Your Profile</h3>
+                </div>
+                <div class="card-body p-5">
+                    
+                    @using (Html.BeginForm("MyProfile", "JobSeeker", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.FullName, new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control rounded-pill", placeholder = "Enter Full Name" })
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.dob, "Date of Birth", new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.dob, "{0:yyyy-MM-dd}", new { @class = "form-control rounded-pill", type = "date" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.gender, "Gender", new { @class = "form-label fw-bold" })
+                                @Html.DropDownListFor(m => m.gender, new SelectList(new[] { "Male", "Female", "Other" }), "Select Gender", new { @class = "form-select rounded-pill" })
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.phone, "Phone Number", new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.phone, new { @class = "form-control rounded-pill", placeholder = "Enter Phone Number" })
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.address, "Address", new { @class = "form-label fw-bold" })
+                            @Html.TextBoxFor(m => m.address, new { @class = "form-control rounded-pill", placeholder = "Enter Full Address" })
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.experience_level, "Experience Level", new { @class = "form-label fw-bold" })
+                                @Html.DropDownListFor(m => m.experience_level, new SelectList(new[] { "Entry Level", "Mid Level", "Senior" }), "Select Experience", new { @class = "form-select rounded-pill" })
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                @Html.LabelFor(m => m.education, "Highest Education", new { @class = "form-label fw-bold" })
+                                @Html.TextBoxFor(m => m.education, new { @class = "form-control rounded-pill", placeholder = "e.g., BSc Computer Science" })
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            @Html.LabelFor(m => m.Bio, "Professional Bio", new { @class = "form-label fw-bold" })
+                            @Html.TextAreaFor(m => m.Bio, new { @class = "form-control rounded-3", rows = 4, placeholder = "Tell employers about yourself..." })
+                        </div>
+
+                        <div class="row mt-4 border-top pt-4">
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold">Profile Picture</label>
+                                <input type="file" name="ImageFile" class="form-control rounded-pill" accept="image/*" />
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <label class="form-label fw-bold">Resume File (PDF)</label>
+                                <input type="file" name="ResumeFile" class="form-control rounded-pill" accept=".pdf" />
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg rounded-pill fw-bold">Save Profile</button>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
