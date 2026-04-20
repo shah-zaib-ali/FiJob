@@ -9,5 +9,6 @@ namespace Job_Portal_System.ViewModel
     {
         public int SavedJobs { get; set; }
         public int TotalSkills { get; set; }
+        public int TotalApplications { get; set; }
     }
 }

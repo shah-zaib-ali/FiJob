@@ -39,7 +39,8 @@ namespace Job_Portal_System.Controllers
             var stats = new JobSeekerStatsViewModel
             {
                 SavedJobs = db.SAVED_JOBS.Count(s => s.seeker_id == uid),
-                TotalSkills = db.USER_SKILLS.Count(us => us.seeker_id == uid) 
+                TotalSkills = db.USER_SKILLS.Count(us => us.seeker_id == uid),
+                TotalApplications = db.APPLICATIONS.Count(a => a.seeker_id == uid)
             };
             
             var userSkills = db.USER_SKILLS

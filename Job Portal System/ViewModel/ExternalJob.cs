@@ -13,16 +13,26 @@ namespace Job_Portal_System.ViewModel
         public string RedirectUrl { get; set; }
     }
 
-    public class JobDataApiResponse
+    public class AdzunaResponse
     {
-        public List<JobDataApiResult> data { get; set; }
+        public List<JobResult> results { get; set; }
     }
 
-    public class JobDataApiResult
+    public class JobResult
     {
         public string title { get; set; }
-        public string company { get; set; }
-        public string location { get; set; }
-        public string original_link { get; set; }
+        public Company company { get; set; }
+        public Location location { get; set; }
+        public string redirect_url { get; set; }
+    }
+
+    public class Company
+    {
+        public string display_name { get; set; }
+    }
+
+    public class Location
+    {
+        public string display_name { get; set; }
     }
 }
