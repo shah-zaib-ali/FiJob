@@ -1,5 +1,5 @@
 ---
-<img src="image.png" width="300">
+<img src="image.png" width="100%">
 
 ## 🚀 Features
 
